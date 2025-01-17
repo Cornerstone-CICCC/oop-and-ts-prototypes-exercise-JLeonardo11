@@ -5,11 +5,15 @@
 
 
 
-// YOUR CODE HERE
+function Vehicle(make, model) {
+    this.make = make; 
+    this.model = model;
+}
 
-
-
+Vehicle.prototype.startEngine = function() {
+    return `The ${this.make} ${this.model} engine is starting.`;
+};
 
 // Test the Vehicle prototype
 const myCar = new Vehicle("Toyota", "Corolla");
-myCar.startEngine();  // Output: The Toyota Corolla engine is starting.
+myCar.startEngine(); // Output: "The Toyota Corolla engine is starting."

@@ -7,11 +7,28 @@
 
 
 // YOUR CODE HERE
+function Device(brand){
+    this.brand = brand;
+}
 
+Device.prototype.powerOn = function (){
+    return `${this.brand} device is now powered on`;
+};
+
+function Smartphone(brand, model){
+    this.model = model;
+    Device.call(this, brand)
+}
+Smartphone.prototype = new Device();
+Smartphone.prototype.constructor = Smartphone;
+
+Smartphone.prototype.call = function(){
+    return`Calling  from ${this.brand} ${this.model}`
+}
 
 
 
 // Test the Smartphone prototype with inheritance
 const myPhone = new Smartphone("Apple", "iPhone 14");
-myPhone.powerOn();  // Output: Apple device is now powered on. (inherited from Device)
-myPhone.call();     // Output: Calling from Apple iPhone 14. (defined in Smartphone)
+console.log(myPhone.powerOn());  // Output: Apple device is now powered on. (inherited from Device)
+console.log(myPhone.call());     // Output: Calling from Apple iPhone 14. (defined in Smartphone)
